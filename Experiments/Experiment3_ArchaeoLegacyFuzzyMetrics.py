@@ -1,7 +1,4 @@
 
-# Martin-Rodilla, P. Tobalina, L. 2025. Python script for replicating Illustration 3 experiment. Illustration 3. Uncertainty in use and chronology to monitor changes in knowledge about a single site: San Blas
-
-
 
 ###################################################################################################################################################################################
 #Instructions: The input data for replicating the experiment Illustration 3 of the article is configured in this space demarcated with #####.
