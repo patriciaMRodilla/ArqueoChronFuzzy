@@ -5,14 +5,14 @@
 
 import pandas as pd
 
-########################
+###################################################################################################################################################################################
 #Instructions: The input data for replicating the experiment in Figure 1 of the article is configured in this space demarcated with #####.
 #To replicate the experiment as it appears in the paper, with all its input values, simply run the script without altering anything.
 #If you need to change the mu function values for another archaeological sites and/or to test other values for membership in the functionality and/or chronology categories:
 #1. Remember that the script is designed to calculate the fuzzy metrics for two arcaheological sites and compare them with each other. For each site, you must specify two mu membership functions as explained in the paper: one for functionality and one for chronology, with the specified categories and a fuzzy value between 0 and 1 per category.
 #2. Once you have defined the functionality and chronology mu functions for each arcaheologial site (two are required), you can run the script again, and it will give you the values for the framework metrics for your two new archaeological sites input data.
 
-#########################
+
 # mu functions for San Blas archaeological site, one per functionality, one per chronologyExplanations on the fuzzy values assigned are in the paper.
 mu_func_sanblas = {
     'A2': 1.00,
@@ -36,6 +36,8 @@ mu_chronology_hito = {
     'c3': 0.75,
     'c4': 0.75
 }
+
+#####################################################################################################################################################################################
 
 
 #  Construction oh the DataFrames for functionality and chronology variables
