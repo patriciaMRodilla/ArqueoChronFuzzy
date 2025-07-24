@@ -8,12 +8,14 @@
 
 
 ###########################################################################################################################################################################################################################
-#Instructions: The input data for replicating the experiment Illustration 2  of the article is configured in this space demarcated with #####.
+#Instructions: The input data for replicating the experiment Illustration 2 of the article is configured in this space demarcated with #####.
 #To replicate the experiment as it appears in the paper, with all its input values, simply run the script without altering anything.
 #If you need to change the mu function values for another archaeological sites and/or to test other values for membership in the functionality and/or chronology categories:
-#1. Remember that the script is designed to calculate the fuzzy metrics for two arcaheological sites and compare them with each other. For each site, you must specify two mu membership functions as explained in the paper: one for functionality and one for chronology, with the specified categories and a fuzzy value between 0 and 1 per category. In this specific experiment, functionality fuzzy values are also organized in chronology phases focusing on  variable functionality as a chronology-dependent variable
-#2. Once you have defined the functionality mu functions in chronological phases for each archaeologial site (two are required), you assigned each mu functionality membership function by phase to a cronological category (i.e. 'c1': mu_func_SanBlasPhase1['A2'],  # c1 is associated with Phase 1 of San Blas)
-# 3. with these two types of membership functions defined by archaeological site  (two are required), you can now run the script again, and it will give you the values for the framework metrics for your two new archaeological sites input data.
+#1. Remember that the script is designed to calculate the fuzzy metrics for two archaeological sites and compare them with each other. For each site, you must specify two mu membership functions as explained in the paper: one per functionality and one per chronology, with the specified categories and a fuzzy value between 0 and 1 per category. 
+# In this specific experiment, functionality fuzzy values are also organized in chronology phases focusing on the functionality variable as a chronology-dependent variable.
+#2. Once you have defined the functionality mu functions in chronological phases for each archaeologial site (two are required), you assigned each mu functionality membership function by phase to a cronological category:
+# (i.e. 'c1': mu_func_SanBlasPhase1['A2'],  # c1 is associated with Phase 1 of San Blas)
+# 3. with these two types of membership functions defined by archaeological site (two are required), you can now run the script again, and it will give you the values for the framework metrics for your two new archaeological sites input data.
 
 
 import pandas as pd
