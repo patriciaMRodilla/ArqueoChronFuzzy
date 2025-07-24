@@ -1,5 +1,5 @@
 
-# Martin-Rodilla, P. Tobalina, L. 2025. Python script for replicating Illustration 1 experiment. Uncertainty in functionality and chronology as independent variables in San Blas and Sta. Maria de Hito archaeological sites.
+
 
 
 
