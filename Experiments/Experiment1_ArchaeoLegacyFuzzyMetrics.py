@@ -132,7 +132,7 @@ feq_sanblas_hito = cal_feq(cdeg_prom_total_sites, 'SanBlas', 'Hito')
 cdeg_prom_total_sites = {'Hito': cdeg_prom_total_hito, 'SanBlas': cdeg_prom_total_sanblas}
 feq_hito_sanblas= cal_feq(cdeg_prom_total_sites, 'Hito','SanBlas')
 
-
+print("ILLUSTRATION 1 EXPERIMENT. RESULTS")
 
 # CDEG First results
 print("\nCDEG by archaeological site:")
