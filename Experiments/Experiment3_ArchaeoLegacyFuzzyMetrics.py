@@ -1,15 +1,33 @@
+
+# Martin-Rodilla, P. Tobalina, L. 2025. Python script for replicating Illustration 3 experiment. Illustration 3. Uncertainty in use and chronology to monitor changes in knowledge about a single site: San Blas
+
+
+
+###################################################################################################################################################################################
+#Instructions: The input data for replicating the experiment Illustration 3 of the article is configured in this space demarcated with #####.
+#To replicate the experiment as it appears in the paper, with all its input values, simply run the script without altering anything.
+#If you need to change the mu function values for another archaeological sites and/or to test other values for membership in the functionality and/or chronology categories:
+#1. Remember that this script is designed to calculate the fuzzy metrics for the same archaeological site but in differetn temporal times, for instance in two different temporal excavations or interventions, and compare them with each other. For each intervention, you must specify one mu membership function as explained in the paper: we focus here on one per functionality with the specified categories and a fuzzy value between 0 and 1 per category.
+#2. Once you have defined  mu functions for each archaeological intervention  (two are required), you can run the script again, and it will give you the values for the framework metrics for your the comparison of the sites in two different arcaheolgical interventions.
+
+
+
+
 import pandas as pd
 
 
 
-mu_use_sanblas1 = {'A2': 1.00,'D1': 0.25, 'E': 0.50}
-mu_use_sanblas2= {'A2': 0.75,'D1': 0.1, 'E': 0.25}
+mu_func_sanblas1 = {'A2': 1.00,'D1': 0.25, 'E': 0.50}
+mu_func_sanblas2= {'A2': 0.75,'D1': 0.1, 'E': 0.25}
+
+
+################################################################################################################################################################################
 
 
 # DataFrame 
 sites = pd.DataFrame({
     'site': ['SanBlas1', 'SanBlas1', 'SanBlas2', 'SanBlas2', 'SanBlas2', 'SanBlas2'],
-    'use': ['A2', 'D1', 'E', 'A2', 'D1', 'E'],
+    'func': ['A2', 'D1', 'E', 'A2', 'D1', 'E'],
 })
 
 # Function for obtaining mu values
@@ -27,13 +45,16 @@ def cal_cdeg_por_var(site, var, df, mu_funcs):
     return max(cdeg_vals)
 
 # Calls CDEG calculation by intervention
-cdeg_use_sanblas1 = cal_cdeg_por_var('SanBlas1', 'use', sites, mu_use_sanblas1)
-cdeg_use_sanblas2 = cal_cdeg_por_var('SanBlas2', 'use', sites, mu_use_sanblas2)
+cdeg_func_sanblas1 = cal_cdeg_por_var('SanBlas1', 'func', sites, mu_func_sanblas1)
+cdeg_func_sanblas2 = cal_cdeg_por_var('SanBlas2', 'func', sites, mu_func_sanblas2)
+
+print("\nUncertainty in functionality to monitor changes in knowledge about a single site: San Blas")
+print("\nILLUSTRATION 3 EXPERIMENT. RESULTS.")
 
 #Call
 print("\nCDEG by archaeological site interventions:")
-print(f"SanBlas1 - CDEG(use): {cdeg_use_sanblas1:.4f}")
-print(f"SanBlas2 - CDEG(use): {cdeg_use_sanblas2:.4f}")
+print(f"SanBlas1 - CDEG(func): {cdeg_func_sanblas1:.4f}")
+print(f"SanBlas2 - CDEG(func): {cdeg_func_sanblas2:.4f}")
 
 
 # CDEGprom calculation by intervention
@@ -45,22 +66,22 @@ def cal_cdeg_prom_por_var(site, var, df, mu_funcs):
     return 0
 
 # Calls CDEGprom calculation by intervention
-cdeg_prom_use_sanblas1 = cal_cdeg_prom_por_var('SanBlas1', 'use', sites, mu_use_sanblas1)
-cdeg_prom_use_sanblas2 = cal_cdeg_prom_por_var('SanBlas2', 'use', sites, mu_use_sanblas2)
+cdeg_prom_func_sanblas1 = cal_cdeg_prom_por_var('SanBlas1', 'func', sites, mu_func_sanblas1)
+cdeg_prom_func_sanblas2 = cal_cdeg_prom_por_var('SanBlas2', 'func', sites, mu_func_sanblas2)
 
-print(f"PROPOSED METRICS & FUZZY FRAMEWORK FOR ARCHAEOLOGICAL LEGACY DATA")
+print("\nPROPOSED METRICS & FUZZY FRAMEWORK FOR ARCHAEOLOGICAL LEGACY DATA")
 
 # New metrics CDEGprom and FEQ results
 print("\nCDEGprom by interventions:")
-print(f"SanBlas1 - CDEGprom(use): {cdeg_prom_use_sanblas1:.4f}")
-print(f"SanBlas2 - CDEGprom(use): {cdeg_prom_use_sanblas2:.4f}")
+print(f"SanBlas1 - CDEGprom(functionality): {cdeg_prom_func_sanblas1:.4f}")
+print(f"SanBlas2 - CDEGprom(functionality): {cdeg_prom_func_sanblas2:.4f}")
 
 
 
 # CDEG prom (*) calculation by intervention (It's the same as CDEGprom(use) because we are only evaluationg one variable (use))
 def cal_cdeg_prom_total(df):
-    cdeg_prom_total_sanblas1 = cdeg_prom_use_sanblas1
-    cdeg_prom_total_sanblas2 = cdeg_prom_use_sanblas2
+    cdeg_prom_total_sanblas1 = cdeg_prom_func_sanblas1
+    cdeg_prom_total_sanblas2 = cdeg_prom_func_sanblas2
     # 
     cdeg_prom_total_sanblas1 = cdeg_prom_total_sanblas1/1
     cdeg_prom_total_sanblas2= cdeg_prom_total_sanblas2/1
