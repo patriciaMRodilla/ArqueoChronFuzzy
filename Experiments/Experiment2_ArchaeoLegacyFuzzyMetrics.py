@@ -1,7 +1,5 @@
 
 
-# Martin-Rodilla, P. Tobalina, L. 2025. Python script for replicating Illustration 2 experiment. Uncertainty in use and chronology as dependent variables in San Blas and Sta. Maria de Hito
-
 
 
 
