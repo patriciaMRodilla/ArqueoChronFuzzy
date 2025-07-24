@@ -7,8 +7,9 @@
 #Instructions: The input data for replicating the experiment Illustration 3 of the article is configured in this space demarcated with #####.
 #To replicate the experiment as it appears in the paper, with all its input values, simply run the script without altering anything.
 #If you need to change the mu function values for another archaeological sites and/or to test other values for membership in the functionality and/or chronology categories:
-#1. Remember that this script is designed to calculate the fuzzy metrics for the same archaeological site but in differetn temporal times, for instance in two different temporal excavations or interventions, and compare them with each other. For each intervention, you must specify one mu membership function as explained in the paper: we focus here on one per functionality with the specified categories and a fuzzy value between 0 and 1 per category.
-#2. Once you have defined  mu functions for each archaeological intervention  (two are required), you can run the script again, and it will give you the values for the framework metrics for your the comparison of the sites in two different arcaheolgical interventions.
+#1. Remember that this script is designed to calculate the fuzzy metrics for the same archaeological site but in different temporal times, for instance in two different temporal excavations or interventions, and compare them with each other. 
+# For each intervention, you must specify one mu membership function as explained in the paper: we focus here on one per functionality with the specified categories and a fuzzy value between 0 and 1 per category.
+#2. Once you have defined  mu functions for each archaeological intervention (two interventions are required), you can run the script again, and it will give you the values for the framework metrics for your comparison of the sites in two different archaeological interventions.
 
 
 
