@@ -1,10 +1,5 @@
 
 
-
-
-
-
-
 ###########################################################################################################################################################################################################################
 #Instructions: The input data for replicating the experiment Illustration 2 of the article is configured in this space demarcated with #####.
 #To replicate the experiment as it appears in the paper, with all its input values, simply run the script without altering anything.
@@ -63,7 +58,7 @@ def get_mu(set, mu_funcs):
     return mu_funcs.get(set, 0)
 
 # Function for obtaining CDEG by variable
-def cal_cdeg_por_var(site, var, df, mu_funcs):
+def cal_cdeg_var(site, var, df, mu_funcs):
     cdeg_vals = []
     for index, row in df.iterrows():
         if row['site'] == site:
@@ -74,12 +69,12 @@ def cal_cdeg_por_var(site, var, df, mu_funcs):
 
 # Function for calculating CDEG(*)
 def cal_cdeg_star(site, df, mu_funcs_func, mu_funcs_chronology):
-    cdeg_func = cal_cdeg_por_var(site, 'func', df, mu_funcs_func)
-    cdeg_chronology = cal_cdeg_por_var(site, 'chronology', df, mu_funcs_chronology)
+    cdeg_func = cal_cdeg_var(site, 'func', df, mu_funcs_func)
+    cdeg_chronology = cal_cdeg_var(site, 'chronology', df, mu_funcs_chronology)
     return min(cdeg_func, cdeg_chronology)
 
-# Function for calculating CDEGprom
-def cal_cdeg_prom(site, df, mu_funcs_func, mu_funcs_chronology):
+# Function for calculating CDEGavg
+def cal_cdeg_avg(site, df, mu_funcs_func, mu_funcs_chronology):
     degrees = []
     for index, row in df.iterrows():
         if row['site'] == site:
@@ -91,8 +86,8 @@ def cal_cdeg_prom(site, df, mu_funcs_func, mu_funcs_chronology):
             degrees.append(chronology_degree)
     return sum(degrees) / len(degrees) if degrees else 0
 
-# Function for calculating CDEGprom(functionality)
-def cal_cdeg_prom_func(site, df, mu_funcs_func):
+# Function for calculating CDEGavg(functionality)
+def cal_cdeg_avg_func(site, df, mu_funcs_func):
     degrees = []
     for index, row in df.iterrows():
         if row['site'] == site:
@@ -101,8 +96,8 @@ def cal_cdeg_prom_func(site, df, mu_funcs_func):
             degrees.append(func_degree)
     return sum(degrees) / len(degrees) if degrees else 0
 
-# Function for calculating CDEGprom(chronology)
-def cal_cdeg_prom_chronology(site, df, mu_funcs_chronology):
+# Function for calculating CDEGavg(chronology)
+def cal_cdeg_avg_chronology(site, df, mu_funcs_chronology):
     degrees = []
     for index, row in df.iterrows():
         if row['site'] == site:
@@ -111,18 +106,18 @@ def cal_cdeg_prom_chronology(site, df, mu_funcs_chronology):
             degrees.append(chronology_degree)
     return sum(degrees) / len(degrees) if degrees else 0
 
-# Calculation of CDEG(*) and CDEGprom for each site with the new membership functions
+# Calculation of CDEG(*) and CDEGavg for each site with the new membership functions
 cdeg_star_sanblas = cal_cdeg_star('SanBlas', sites, mu_func_SanBlasPhase1, mu_chronology_sanblas)
 cdeg_star_hito = cal_cdeg_star('Hito', sites, mu_func_HitoPhase1, mu_chronology_hito)
 
-cdeg_prom_sanblas = cal_cdeg_prom('SanBlas', sites, mu_func_SanBlasPhase1, mu_chronology_sanblas)
-cdeg_prom_hito = cal_cdeg_prom('Hito', sites, mu_func_HitoPhase1, mu_chronology_hito)
+cdeg_avg_sanblas = cal_cdeg_avg('SanBlas', sites, mu_func_SanBlasPhase1, mu_chronology_sanblas)
+cdeg_avg_hito = cal_cdeg_avg('Hito', sites, mu_func_HitoPhase1, mu_chronology_hito)
 
-cdeg_prom_func_sanblas = cal_cdeg_prom_func('SanBlas', sites, mu_func_SanBlasPhase1)
-cdeg_prom_func_hito = cal_cdeg_prom_func('Hito', sites, mu_func_HitoPhase1)
+cdeg_avg_func_sanblas = cal_cdeg_avg_func('SanBlas', sites, mu_func_SanBlasPhase1)
+cdeg_avg_func_hito = cal_cdeg_avg_func('Hito', sites, mu_func_HitoPhase1)
 
-cdeg_prom_chronology_sanblas = cal_cdeg_prom_chronology('SanBlas', sites, mu_chronology_sanblas)
-cdeg_prom_chronology_hito = cal_cdeg_prom_chronology('Hito', sites, mu_chronology_hito)
+cdeg_avg_chronology_sanblas = cal_cdeg_avg_chronology('SanBlas', sites, mu_chronology_sanblas)
+cdeg_avg_chronology_hito = cal_cdeg_avg_chronology('Hito', sites, mu_chronology_hito)
 
 
 print("ILLUSTRATION 2 EXPERIMENT. RESULTS")
@@ -130,17 +125,17 @@ print("ILLUSTRATION 2 EXPERIMENT. RESULTS")
 print("CDEG(*) San Blas:", cdeg_star_sanblas)
 print("CDEG(*) Hito:", cdeg_star_hito)
 
-print("CDEGprom San Blas:", cdeg_prom_sanblas)
-print("CDEGprom Hito:", cdeg_prom_hito)
+print("CDEGavg San Blas:", cdeg_avg_sanblas)
+print("CDEGavg Hito:", cdeg_avg_hito)
 
-print("CDEGprom(functionality) San Blas:", cdeg_prom_func_sanblas)
-print("CDEGprom(functionality) Hito:", cdeg_prom_func_hito)
+print("CDEGavg(functionality) San Blas:", cdeg_avg_func_sanblas)
+print("CDEGavg(functionality) Hito:", cdeg_avg_func_hito)
 
-print("CDEGprom(chronology) San Blas:", cdeg_prom_chronology_sanblas)
-print("CDEGprom(chronology) Hito:", cdeg_prom_chronology_hito)
+print("CDEGavg(chronology) San Blas:", cdeg_avg_chronology_sanblas)
+print("CDEGavg(chronology) Hito:", cdeg_avg_chronology_hito)
 
-# Function for calculating CDEGprom(*) by archaeological site
-def cal_cdeg_prom_star(site, df, mu_funcs_chronology):
+# Function for calculating CDEGavg(*) by archaeological site
+def cal_cdeg_avg_star(site, df, mu_funcs_chronology):
     degrees = []
     for index, row in df[df['site'] == site].iterrows():
         chronology_set = row['chronology']
@@ -148,9 +143,13 @@ def cal_cdeg_prom_star(site, df, mu_funcs_chronology):
         degrees.append(chronology_degree)
     return sum(degrees) / len(degrees) if degrees else 0
 
-# Calculation of CDEGprom(*) by archaeological site (chronology as independent variable, use as dependent variable)
-cdeg_prom_star_sanblas = cal_cdeg_prom_star('SanBlas', sites, mu_chronology_sanblas)
-cdeg_prom_star_hito = cal_cdeg_prom_star('Hito', sites, mu_chronology_hito)
+# Calculation of CDEGavg(*) by archaeological site (chronology as independent variable, use as dependent variable)
+cdeg_avg_star_sanblas = cal_cdeg_avg_star('SanBlas', sites, mu_chronology_sanblas)
+cdeg_avg_star_hito = cal_cdeg_avg_star('Hito', sites, mu_chronology_hito)
 
-print("CDEGprom(*) para San Blas:", cdeg_prom_star_sanblas)
-print("CDEGprom(*) para Hito:", cdeg_prom_star_hito)
+print("CDEGavg(*) para San Blas:", cdeg_avg_star_sanblas)
+print("CDEGavg(*) para Hito:", cdeg_avg_star_hito)
+
+
+
+
